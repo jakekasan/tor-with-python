@@ -1,23 +1,29 @@
+from datetime import datetime
 import sqlite3
+import .config
 
-class KnownNode:
-    def __init__(self, addr = None):
-        self.addedAt = datetime.datetime.now()
+class NodeModel:
+    def __init__(self, addr, dateAdded):
         self.addr = addr
+        self.date_added = date_added
 
-    def __repr__(self):
-        return "<{} @={}".format(self.__class__.__name__, self.addr)
+    @classmethod
+    def new(self, addr):
+        return NodeModel(addr, datetime.now())
 
-    def _addToDatabase(self):
-        pass
+    @classmethod
+    def q()
 
-    @staticmethod
-    def getAll():
-        """
-            Returns all known nodes from database
-        """
-        return []
+    @classmethod
+    def get(addr):
+        return self.q()
 
-class Connection:
-    def __init__(self):
-        pass
+    @classmethod
+    def get_all(self):
+        return [
+            NodeModel(addr, dt)
+            for addr, dt in run_query(
+                """select * from {}""",
+                config.node_tbl
+            )
+        ]
